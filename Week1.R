@@ -43,6 +43,16 @@ acf(diff(diff(AirPassengers)))  # better
 pacf((AirPassengers))
 
 
+### Decompose the Time Serie
+
+f <- decompose(AirPassengers)
+plot(f$figure, type = "c")
+plot(f$seasonal, type = "l")
+plot(f$trend, type = "l")
+
+
+## Advent of Code
+
 dat <- read.table("input1_a.in", header = F, sep = ",", stringsAsFactors = F, strip.white = T)
 lets <- sapply(1:ncol(dat), function(i) strsplit((dat[, i]), split = "")[[1]][1])
 ints <- sapply(1:ncol(dat), function(i) strsplit((dat[, i]), split = "")[[1]][2])

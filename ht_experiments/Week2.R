@@ -111,3 +111,50 @@ system.time(
   
   })
 )
+
+
+1 - (0.95)^(1/1000)
+
+
+
+
+# Bonferroni Correction Exercises #1 (Bonferonni versus Sidak)
+
+alphas <- seq(0,0.25,0.01)
+ms <- seq(2, 2000)
+m <- 1000*8
+m <- 3
+
+k <- alphas / m
+plot(alphas, 1 - (1- k)^m, main = "Bonferroni", type = "l")
+
+k <- 1 - (1 - alphas)^(1/m)
+plot(alphas, 1 - (1- k)^m, main = "Sidak", type = "l")
+
+
+
+# Bonferroni Correction Exercises #2 (Monte Carlo Simulation)
+
+set.seed(1)
+m <- 10000
+pvals <- runif(m, 0, 1)
+
+BonferroniCorrec <- function(alpha, m){
+  return(alpha / m )
+}
+
+SidakCorrec <- function(alpha, m){
+  return(1 - (1-alpha)^(1 / m))
+}
+
+k <- BonferroniCorrec(0.05, m)
+
+sum(pvals <= k)
+
+(fwer <- 1 - (1 - k)^m)
+
+k <- SidakCorrec(0.05, m)
+
+fwer
+
+mean(pvals <= k)

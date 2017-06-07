@@ -70,6 +70,10 @@ g <- factor(sampleInfo$group)  # Encode
 # suppose the order of the samples is identical to the encoding
 min(apply(geneExpression, 1, GetTTest, g))  # minimum
 
+
+
+
+
 ## Time series
 
 data("AirPassengers")
@@ -132,6 +136,10 @@ myf <- function(j, arr, vals){
 }
 
 res <- sapply(3:length(ints), myf, lets, ints)
+
+
+
+
 
 
 # Inference in Practice Exercises
